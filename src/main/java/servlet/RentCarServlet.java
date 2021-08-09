@@ -39,12 +39,11 @@ public class RentCarServlet extends HttpServlet {
         client.setAge(clientAge);
         client.setDriverLicenseNumber(driverLicense);
         client.setCarID(i);
-        List<Clients> clients = clientManager.getAllClients();
-        for (Clients client1 : clients) {
-            if (!client1.getEmail().equalsIgnoreCase(email)) {
-                clientManager.register(client);
-            }
+        Clients byEmail = clientManager.getByEmail(email);
+        if (byEmail == null) {
+            clientManager.register(client);
         }
+
 
         req.setAttribute("message", "your rent adopted");
         resp.sendRedirect("/home");

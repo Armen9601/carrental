@@ -141,4 +141,19 @@ public class ClientManager {
         }
         return null;
     }
+
+    public Clients getByEmail(String email) {
+        String sql = "SELECT * FROM client where email=?";
+        try {
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setString(1, email);
+            ResultSet resultSet = statement.executeQuery();
+            if (resultSet.next()) {
+                return getClientsFromResultSet(resultSet);
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return null;
+    }
 }

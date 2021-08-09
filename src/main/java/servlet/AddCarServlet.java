@@ -12,10 +12,10 @@ import java.io.IOException;
 
 @WebServlet(urlPatterns = "/addCar")
 public class AddCarServlet extends HttpServlet {
-    static CarManager carManager = new CarManager();
 
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        CarManager carManager = new CarManager();
         String brand = req.getParameter("brand");
         String model = req.getParameter("model");
         String year = req.getParameter("year");

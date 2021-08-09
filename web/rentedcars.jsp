@@ -94,11 +94,13 @@
                         </thead>
                         <tbody>
                         <%
-                            for (Clients client : clients) {%>
-                        <%
-                            CarManager carManager=new CarManager();
-                            
-                            Car carById=carManager.getByID(client.getCarID());%>
+                            for (Clients client : clients) {
+
+                                CarManager carManager=new CarManager();
+
+                                Car carById=carManager.getByID(client.getCarID());
+                                if (carById!=null){
+                        %>
 
                         <tr class="">
                             <td class="car-image">
@@ -143,7 +145,7 @@
                                 </div>
                             </td>
                         </tr><!-- END TR-->
-                        <%}%>
+                        <%}}%>
                         </tbody>
                     </table>
                 </div>
